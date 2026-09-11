@@ -110,36 +110,36 @@ CONFIDENTIAL - FOR OFFICIAL HARYANA POLICE USE ONLY
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', gap: '1.25rem', overflowY: 'auto' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', gap: '1rem', overflowY: 'auto' }}>
       
       {/* Search Header Bar */}
-      <div className="glass-panel" style={{ padding: '1.5rem' }}>
-        <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.3rem' }}>Link & Domain Forensics Engine</h2>
-        <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.25rem' }}>
-          Deconstruct suspicious URLs, inspect WHOIS registries, server infrastructure, DNS records, and export legal notices.
+      <div className="glass-panel" style={{ padding: '1.25rem' }}>
+        <h2 style={{ fontSize: '1.15rem', fontWeight: 600, marginBottom: '0.3rem' }}>Link & Domain Forensics Engine</h2>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem', marginBottom: '1rem' }}>
+          Deconstruct suspicious URLs, inspect WHOIS registries, server infrastructure, and export police advisories.
         </p>
 
         {/* Input Field */}
-        <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
-          <div style={{ flex: 1, display: 'flex', alignItems: 'center', background: 'rgba(0,0,0,0.6)', border: 'var(--glass-border)', borderRadius: '8px', padding: '0 1rem' }}>
-            <Globe size={20} color="var(--accent-cyan)" style={{ marginRight: '0.75rem' }} />
+        <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.85rem', flexWrap: 'wrap' }}>
+          <div style={{ flex: 1, minWidth: '220px', display: 'flex', alignItems: 'center', background: 'rgba(0,0,0,0.6)', border: 'var(--glass-border)', borderRadius: '8px', padding: '0 0.8rem' }}>
+            <Globe size={18} color="var(--accent-cyan)" style={{ marginRight: '0.5rem' }} />
             <input 
               type="text" 
-              placeholder="Paste suspicious link (e.g., http://haryana-police-kyc-update.xyz/login.php)..."
+              placeholder="Paste suspicious link..."
               value={urlInput}
               onChange={(e) => setUrlInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleScan()}
-              style={{ width: '100%', background: 'transparent', border: 'none', color: 'white', outline: 'none', padding: '0.85rem 0', fontSize: '0.95rem' }}
+              style={{ width: '100%', background: 'transparent', border: 'none', color: 'white', outline: 'none', padding: '0.75rem 0', fontSize: '0.85rem' }}
             />
           </div>
-          <button className="btn-primary" onClick={() => handleScan()} style={{ padding: '0 1.75rem', fontSize: '0.95rem' }}>
-            <Search size={16} /> Scan Domain
+          <button className="btn-primary" onClick={() => handleScan()} style={{ padding: '0.75rem 1.25rem', fontSize: '0.85rem' }}>
+            <Search size={15} /> Scan Link
           </button>
         </div>
 
         {/* Presets */}
-        <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
-          <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500 }}>Quick Presets:</span>
+        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
+          <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: 500 }}>Quick Presets:</span>
           {demoCases.map((c, idx) => (
             <button 
               key={idx}
@@ -151,11 +151,10 @@ CONFIDENTIAL - FOR OFFICIAL HARYANA POLICE USE ONLY
                 background: 'rgba(255,255,255,0.05)',
                 border: 'var(--glass-border)',
                 color: 'var(--text-main)',
-                padding: '6px 12px',
+                padding: '5px 10px',
                 borderRadius: '6px',
-                fontSize: '0.82rem',
-                cursor: 'pointer',
-                transition: 'background 0.15s ease'
+                fontSize: '0.78rem',
+                cursor: 'pointer'
               }}
             >
               {c.label}
@@ -166,155 +165,155 @@ CONFIDENTIAL - FOR OFFICIAL HARYANA POLICE USE ONLY
 
       {/* Loading */}
       {isScanning && (
-        <div className="glass-panel" style={{ textAlign: 'center', padding: '3.5rem', color: 'var(--accent-cyan)' }}>
-          <div style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Querying Global WHOIS Registries & DNS Servers...</div>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>Analyzing infrastructure threat vectors...</p>
+        <div className="glass-panel" style={{ textAlign: 'center', padding: '2.5rem', color: 'var(--accent-cyan)' }}>
+          <div style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Querying WHOIS Registries & DNS Servers...</div>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>Analyzing infrastructure threat vectors...</p>
         </div>
       )}
 
-      {/* All-in-One Comprehensive Results Matrix (Bold, Prominent Layout!) */}
+      {/* All-in-One Mobile Responsive Matrix */}
       {analysisResult && !isScanning && (
-        <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: '1.25rem', alignItems: 'start' }}>
+        <div className="phishing-grid">
           
-          {/* Left Column: Risk Score + Legal Notice */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+          {/* Left Column: Risk Gauge + Legal Notice */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             
             {/* Risk Gauge Card */}
-            <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '2rem 1.5rem' }}>
+            <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '1.5rem 1rem' }}>
               <div style={{ 
-                width: 120, 
-                height: 120, 
+                width: 100, 
+                height: 100, 
                 borderRadius: '50%', 
-                border: `5px solid ${analysisResult.isSuspicious ? '#f43f5e' : '#10b981'}`,
+                border: `4px solid ${analysisResult.isSuspicious ? '#f43f5e' : '#10b981'}`,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: analysisResult.isSuspicious ? '0 0 24px rgba(244,63,94,0.35)' : '0 0 24px rgba(16,185,129,0.35)',
-                marginBottom: '1.25rem'
+                boxShadow: analysisResult.isSuspicious ? '0 0 20px rgba(244,63,94,0.35)' : '0 0 20px rgba(16,185,129,0.35)',
+                marginBottom: '1rem'
               }}>
-                <span style={{ fontSize: '2.2rem', fontWeight: 700, color: analysisResult.isSuspicious ? '#f43f5e' : '#10b981' }}>
+                <span style={{ fontSize: '1.9rem', fontWeight: 700, color: analysisResult.isSuspicious ? '#f43f5e' : '#10b981' }}>
                   {analysisResult.riskScore}%
                 </span>
-                <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)', fontWeight: 600, letterSpacing: '0.5px' }}>THREAT SCORE</span>
+                <span style={{ fontSize: '0.6rem', color: 'var(--text-muted)', fontWeight: 600 }}>THREAT SCORE</span>
               </div>
 
               <div style={{ 
                 display: 'flex', 
                 alignItems: 'center', 
-                gap: '0.5rem', 
+                gap: '0.4rem', 
                 fontWeight: 700, 
-                fontSize: '1rem',
+                fontSize: '0.9rem',
                 color: analysisResult.isSuspicious ? '#f43f5e' : '#10b981',
-                marginBottom: '0.5rem'
+                marginBottom: '0.4rem'
               }}>
-                {analysisResult.isSuspicious ? <ShieldAlert size={20} /> : <ShieldCheck size={20} />}
+                {analysisResult.isSuspicious ? <ShieldAlert size={18} /> : <ShieldCheck size={18} />}
                 {analysisResult.status}
               </div>
 
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1.5rem', wordBreak: 'break-all' }}>
+              <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '1.25rem', wordBreak: 'break-all' }}>
                 {analysisResult.domain}
               </div>
 
-              <button className="btn-primary" onClick={downloadReport} style={{ width: '100%', justifyContent: 'center', background: analysisResult.isSuspicious ? 'var(--danger-red)' : 'var(--accent-blue)', padding: '0.75rem', fontSize: '0.9rem', fontWeight: 600 }}>
-                <Download size={16} /> Export Police Report (.txt)
+              <button className="btn-primary" onClick={downloadReport} style={{ width: '100%', justifyContent: 'center', background: analysisResult.isSuspicious ? 'var(--danger-red)' : 'var(--accent-blue)', padding: '0.65rem', fontSize: '0.85rem', fontWeight: 600 }}>
+                <Download size={15} /> Export Police Report (.txt)
               </button>
             </div>
 
-            {/* Legal Notice Box (Directly under Risk Score) */}
-            <div className="glass-panel" style={{ padding: '1.25rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600, fontSize: '0.95rem', color: 'var(--danger-red)', marginBottom: '0.6rem' }}>
-                <AlertTriangle size={18} /> Police Legal Advisory
+            {/* Legal Notice Box */}
+            <div className="glass-panel" style={{ padding: '1rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 600, fontSize: '0.88rem', color: 'var(--danger-red)', marginBottom: '0.5rem' }}>
+                <AlertTriangle size={16} /> Police Legal Advisory
               </div>
-              <div style={{ fontSize: '0.85rem', color: 'white', fontWeight: 500, marginBottom: '0.75rem', lineHeight: '1.4' }}>
+              <div style={{ fontSize: '0.8rem', color: 'white', fontWeight: 500, marginBottom: '0.5rem', lineHeight: '1.4' }}>
                 {analysisResult.legalAction.itActSection}
               </div>
-              <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: '1.4' }}>
+              <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: '1.4' }}>
                 {analysisResult.legalAction.recommendedAction}
               </div>
             </div>
 
           </div>
 
-          {/* Right Column: Full Investigation Matrix (Everything visible at once!) */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+          {/* Right Column: Full Investigation Matrix */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             
             {/* Row 1: WHOIS & Server Info */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
+            <div className="two-col-grid">
               {/* WHOIS */}
-              <div className="glass-panel" style={{ padding: '1.25rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600, color: 'var(--accent-cyan)', marginBottom: '1rem', fontSize: '0.95rem' }}>
-                  <Calendar size={18} /> Domain WHOIS Intelligence
+              <div className="glass-panel" style={{ padding: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 600, color: 'var(--accent-cyan)', marginBottom: '0.75rem', fontSize: '0.88rem' }}>
+                  <Calendar size={16} /> Domain WHOIS Intel
                 </div>
-                <div style={{ fontSize: '0.88rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                <div style={{ fontSize: '0.8rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   <div><span style={{ color: 'var(--text-muted)' }}>Registrar:</span> <strong style={{ color: 'white' }}>{analysisResult.whois.registrar}</strong></div>
                   <div><span style={{ color: 'var(--text-muted)' }}>Created Date:</span> <strong style={{ color: 'white' }}>{analysisResult.whois.createdDate}</strong></div>
-                  <div><span style={{ color: 'var(--text-muted)' }}>Registrant Country:</span> <strong style={{ color: 'white' }}>{analysisResult.whois.registrantCountry}</strong></div>
-                  <div><span style={{ color: 'var(--text-muted)' }}>Name Servers:</span> <code style={{ color: 'var(--accent-cyan)', fontSize: '0.8rem' }}>{analysisResult.whois.nameServers.join(', ')}</code></div>
+                  <div><span style={{ color: 'var(--text-muted)' }}>Country:</span> <strong style={{ color: 'white' }}>{analysisResult.whois.registrantCountry}</strong></div>
                 </div>
               </div>
 
               {/* Server Info */}
-              <div className="glass-panel" style={{ padding: '1.25rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600, color: 'var(--accent-purple)', marginBottom: '1rem', fontSize: '0.95rem' }}>
-                  <Server size={18} /> Server & Infrastructure
+              <div className="glass-panel" style={{ padding: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 600, color: 'var(--accent-purple)', marginBottom: '0.75rem', fontSize: '0.88rem' }}>
+                  <Server size={16} /> Server Infrastructure
                 </div>
-                <div style={{ fontSize: '0.88rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                  <div><span style={{ color: 'var(--text-muted)' }}>IP Address:</span> <code style={{ color: 'var(--accent-cyan)', background: 'rgba(255,255,255,0.06)', padding: '2px 8px', borderRadius: '4px', fontSize: '0.85rem' }}>{analysisResult.hosting.ipAddress}</code></div>
-                  <div><span style={{ color: 'var(--text-muted)' }}>Server Location:</span> <strong style={{ color: 'white' }}>{analysisResult.hosting.location}</strong></div>
-                  <div><span style={{ color: 'var(--text-muted)' }}>ISP Provider:</span> <strong style={{ color: 'white' }}>{analysisResult.hosting.isp}</strong></div>
-                  <div><span style={{ color: 'var(--text-muted)' }}>Web Engine:</span> <strong style={{ color: 'white' }}>{analysisResult.hosting.serverType}</strong></div>
+                <div style={{ fontSize: '0.8rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  <div><span style={{ color: 'var(--text-muted)' }}>IP Address:</span> <code style={{ color: 'var(--accent-cyan)', background: 'rgba(255,255,255,0.06)', padding: '2px 6px', borderRadius: '4px', fontSize: '0.8rem' }}>{analysisResult.hosting.ipAddress}</code></div>
+                  <div><span style={{ color: 'var(--text-muted)' }}>Location:</span> <strong style={{ color: 'white' }}>{analysisResult.hosting.location}</strong></div>
+                  <div><span style={{ color: 'var(--text-muted)' }}>Engine:</span> <strong style={{ color: 'white' }}>{analysisResult.hosting.serverType}</strong></div>
                 </div>
               </div>
             </div>
 
-            {/* Row 2: DNS Records Matrix (Visible directly!) */}
-            <div className="glass-panel" style={{ padding: '1.25rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600, fontSize: '0.95rem', color: 'var(--accent-cyan)', marginBottom: '0.85rem' }}>
-                <Database size={18} /> Active DNS Record Matrix
+            {/* Row 2: DNS Records Matrix */}
+            <div className="glass-panel" style={{ padding: '1rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 600, fontSize: '0.88rem', color: 'var(--accent-cyan)', marginBottom: '0.75rem' }}>
+                <Database size={16} /> Active DNS Record Matrix
               </div>
-              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem', textAlign: 'left' }}>
-                <thead>
-                  <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-muted)' }}>
-                    <th style={{ padding: '8px' }}>Type</th>
-                    <th style={{ padding: '8px' }}>Record Value</th>
-                    <th style={{ padding: '8px', textAlign: 'right' }}>Security Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {analysisResult.dnsRecords.map((dns, idx) => (
-                    <tr key={idx} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-                      <td style={{ padding: '8px', fontWeight: 600, color: 'var(--accent-cyan)' }}>{dns.type}</td>
-                      <td style={{ padding: '8px', fontFamily: 'monospace', color: 'white' }}>{dns.value}</td>
-                      <td style={{ padding: '8px', textAlign: 'right' }}>
-                        <span style={{ 
-                          padding: '3px 8px', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 600,
-                          background: dns.status === 'Vulnerable' ? 'rgba(244,63,94,0.2)' : 'rgba(16,185,129,0.2)',
-                          color: dns.status === 'Vulnerable' ? '#f43f5e' : '#10b981'
-                        }}>
-                          {dns.status}
-                        </span>
-                      </td>
+              <div style={{ overflowX: 'auto' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.8rem', textAlign: 'left' }}>
+                  <thead>
+                    <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-muted)' }}>
+                      <th style={{ padding: '6px' }}>Type</th>
+                      <th style={{ padding: '6px' }}>Record Value</th>
+                      <th style={{ padding: '6px', textAlign: 'right' }}>Status</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {analysisResult.dnsRecords.map((dns, idx) => (
+                      <tr key={idx} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                        <td style={{ padding: '6px', fontWeight: 600, color: 'var(--accent-cyan)' }}>{dns.type}</td>
+                        <td style={{ padding: '6px', fontFamily: 'monospace', color: 'white', fontSize: '0.75rem' }}>{dns.value}</td>
+                        <td style={{ padding: '6px', textAlign: 'right' }}>
+                          <span style={{ 
+                            padding: '2px 6px', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 600,
+                            background: dns.status === 'Vulnerable' ? 'rgba(244,63,94,0.2)' : 'rgba(16,185,129,0.2)',
+                            color: dns.status === 'Vulnerable' ? '#f43f5e' : '#10b981'
+                          }}>
+                            {dns.status}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
 
-            {/* Row 3: Forensic Signals Checklist (Visible directly!) */}
-            <div className="glass-panel" style={{ padding: '1.25rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600, fontSize: '0.95rem', color: 'white', marginBottom: '0.85rem' }}>
-                <Shield size={18} color="var(--accent-cyan)" /> Forensic Risk Signals
+            {/* Row 3: Forensic Signals Checklist */}
+            <div className="glass-panel" style={{ padding: '1rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 600, fontSize: '0.88rem', color: 'white', marginBottom: '0.75rem' }}>
+                <Shield size={16} color="var(--accent-cyan)" /> Forensic Risk Signals
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem' }}>
+              <div className="two-col-grid">
                 {analysisResult.forensicSignals.map((sig, i) => (
-                  <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem 1rem', background: 'rgba(0,0,0,0.4)', borderRadius: '8px', fontSize: '0.85rem', border: 'var(--glass-border)' }}>
+                  <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.6rem 0.8rem', background: 'rgba(0,0,0,0.4)', borderRadius: '6px', fontSize: '0.8rem', border: 'var(--glass-border)' }}>
                     <div>
                       <div style={{ fontWeight: 600, color: 'white' }}>{sig.check}</div>
-                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '2px' }}>{sig.desc}</div>
+                      <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: '2px' }}>{sig.desc}</div>
                     </div>
                     <span style={{ 
-                      padding: '3px 8px', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 700,
+                      padding: '2px 6px', borderRadius: '4px', fontSize: '0.7rem', fontWeight: 700,
                       background: sig.failed ? 'rgba(244,63,94,0.2)' : 'rgba(16,185,129,0.2)',
                       color: sig.failed ? '#f43f5e' : '#10b981'
                     }}>

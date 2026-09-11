@@ -12,7 +12,7 @@ function App() {
       {/* Sidebar Navigation */}
       <aside className="sidebar">
         <div className="sidebar-logo">
-          <Shield className="logo-icon" size={24} />
+          <Shield className="logo-icon" size={22} />
           <span>CyberTrail OS</span>
         </div>
         
@@ -42,9 +42,9 @@ function App() {
           </div>
         </nav>
 
-        <div style={{ marginTop: 'auto', padding: '0.75rem 0.5rem', borderTop: 'var(--glass-border)', color: 'var(--text-muted)', fontSize: '0.75rem' }}>
+        <div className="sidebar-footer">
           <div>Haryana Police Cyber Cell</div>
-          <div style={{ color: 'var(--accent-cyan)', fontSize: '0.7rem' }}>Portal v1.0 • Hackathon Edition</div>
+          <div style={{ color: 'var(--accent-cyan)', fontSize: '0.7rem' }}>Portal v1.0 • Hackathon</div>
         </div>
       </aside>
 
@@ -53,10 +53,10 @@ function App() {
         <header className="header">
           <h1>
             {activeTab === 'financial' && 'Financial Transaction Forensics'}
-            {activeTab === 'phishing' && 'Phishing Link & Domain Forensics'}
+            {activeTab === 'phishing' && 'Phishing Link Forensics'}
             {activeTab === 'osint' && 'OSINT Resource Directory'}
           </h1>
-          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
             Haryana Police Cyber Division
           </div>
         </header>

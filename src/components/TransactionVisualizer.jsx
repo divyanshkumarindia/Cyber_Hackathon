@@ -12,7 +12,6 @@ import ReactFlow, {
 import 'reactflow/dist/style.css';
 import { Upload, Play, AlertTriangle, Database, Table, Network } from 'lucide-react';
 
-// Custom Node Component
 const CustomNode = ({ data }) => {
   return (
     <div className={`custom-node layer-${data.layer}`}>
@@ -94,7 +93,7 @@ export default function TransactionVisualizer() {
         });
       }
 
-      // Edge Connection with Amount and Date!
+      // Edge Connection
       const formattedDate = txDate ? ` • ${txDate}` : '';
       newEdges.push({
         id: `e-${SenderAccount}-${ReceiverAccount}-${index}`,
@@ -146,22 +145,21 @@ export default function TransactionVisualizer() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', gap: '1rem' }}>
       {/* Action Bar */}
-      <div className="glass-panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', padding: '1rem 1.25rem' }}>
+      <div className="glass-panel" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem', padding: '0.9rem 1.1rem' }}>
         <div>
-          <h2 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Financial Transaction Matrix</h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
-            Map unstructured bank CSV statements into an automated account flow matrix.
+          <h2 style={{ fontSize: '1.05rem', fontWeight: 600 }}>Financial Transaction Matrix</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>
+            Map bank CSV statements into an automated account flow matrix.
           </p>
         </div>
 
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          {/* Toggle View Switch */}
+        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', background: 'rgba(0,0,0,0.5)', padding: '3px', borderRadius: '6px', border: 'var(--glass-border)' }}>
             <button 
               className="btn-primary" 
               style={{ 
                 background: viewMode === 'split' ? 'var(--accent-blue)' : 'transparent', 
-                boxShadow: 'none', padding: '5px 10px', fontSize: '0.8rem' 
+                boxShadow: 'none', padding: '5px 8px', fontSize: '0.75rem' 
               }}
               onClick={() => setViewMode('split')}
             >
@@ -171,30 +169,30 @@ export default function TransactionVisualizer() {
               className="btn-primary" 
               style={{ 
                 background: viewMode === 'graph' ? 'var(--accent-blue)' : 'transparent', 
-                boxShadow: 'none', padding: '5px 10px', fontSize: '0.8rem' 
+                boxShadow: 'none', padding: '5px 8px', fontSize: '0.75rem' 
               }}
               onClick={() => setViewMode('graph')}
             >
-              <Network size={13} /> Graph
+              <Network size={12} /> Graph
             </button>
             <button 
               className="btn-primary" 
               style={{ 
                 background: viewMode === 'table' ? 'var(--accent-blue)' : 'transparent', 
-                boxShadow: 'none', padding: '5px 10px', fontSize: '0.8rem' 
+                boxShadow: 'none', padding: '5px 8px', fontSize: '0.75rem' 
               }}
               onClick={() => setViewMode('table')}
             >
-              <Table size={13} /> Table
+              <Table size={12} /> Table
             </button>
           </div>
 
-          <button className="btn-primary" onClick={loadMockData} style={{ background: 'rgba(56, 189, 248, 0.1)', border: '1px solid var(--accent-cyan)', color: 'var(--accent-cyan)', boxShadow: 'none' }}>
-            <Play size={14} /> Demo CSV
+          <button className="btn-primary" onClick={loadMockData} style={{ background: 'rgba(56, 189, 248, 0.1)', border: '1px solid var(--accent-cyan)', color: 'var(--accent-cyan)', boxShadow: 'none', padding: '5px 10px', fontSize: '0.75rem' }}>
+            <Play size={13} /> Demo CSV
           </button>
           
-          <label className="btn-primary" style={{ cursor: 'pointer' }}>
-            <Upload size={14} /> Upload CSV
+          <label className="btn-primary" style={{ cursor: 'pointer', padding: '5px 10px', fontSize: '0.75rem' }}>
+            <Upload size={13} /> Upload CSV
             <input 
               type="file" 
               accept=".csv" 
@@ -205,47 +203,47 @@ export default function TransactionVisualizer() {
         </div>
       </div>
 
-      {/* Content Area */}
-      <div style={{ flex: 1, display: 'grid', gridTemplateColumns: viewMode === 'split' ? '1fr 1.6fr' : '1fr', gap: '1rem', minHeight: 0 }}>
+      {/* Content Area using responsive split-view-grid */}
+      <div className={viewMode === 'split' ? 'split-view-grid' : ''} style={{ flex: 1, display: viewMode !== 'split' ? 'flex' : undefined, minHeight: 0 }}>
         
-        {/* Left Side: Clean Raw Table with Date Column! */}
+        {/* Left Side: Table */}
         {(viewMode === 'split' || viewMode === 'table') && (
-          <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', padding: '1rem', minHeight: 0 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', paddingBottom: '0.5rem', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)' }}>
-                <Table size={15} /> Bank Statement Records
+          <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', padding: '0.9rem', minHeight: '220px', flex: viewMode === 'table' ? 1 : undefined }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', paddingBottom: '0.4rem', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)' }}>
+                <Table size={14} /> Bank Statement Records
               </div>
-              <span style={{ fontSize: '0.75rem', color: 'var(--accent-cyan)' }}>
+              <span style={{ fontSize: '0.72rem', color: 'var(--accent-cyan)' }}>
                 {rawTransactions.length} Transactions
               </span>
             </div>
 
             {rawTransactions.length > 0 ? (
-              <div style={{ overflowY: 'auto', flex: 1, paddingRight: '4px' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.78rem', textAlign: 'left', tableLayout: 'fixed' }}>
+              <div style={{ overflowY: 'auto', flex: 1, maxHeight: '350px' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.75rem', textAlign: 'left', tableLayout: 'fixed' }}>
                   <thead>
                     <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', color: 'var(--text-muted)' }}>
-                      <th style={{ padding: '6px 4px', width: '22%' }}>Date</th>
-                      <th style={{ padding: '6px 4px', width: '28%' }}>Sender</th>
-                      <th style={{ padding: '6px 4px', width: '28%' }}>Receiver</th>
-                      <th style={{ padding: '6px 4px', width: '22%', textAlign: 'right' }}>Amount</th>
+                      <th style={{ padding: '4px', width: '25%' }}>Date</th>
+                      <th style={{ padding: '4px', width: '25%' }}>Sender</th>
+                      <th style={{ padding: '4px', width: '25%' }}>Receiver</th>
+                      <th style={{ padding: '4px', width: '25%', textAlign: 'right' }}>Amount</th>
                     </tr>
                   </thead>
                   <tbody>
                     {rawTransactions.map((tx, idx) => (
                       <tr key={idx} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-                        <td style={{ padding: '8px 4px', color: 'var(--text-muted)', fontSize: '0.75rem', whiteSpace: 'nowrap' }}>
-                          {tx.Date || '2023-10-01'}
+                        <td style={{ padding: '6px 4px', color: 'var(--text-muted)', fontSize: '0.7rem', whiteSpace: 'nowrap' }}>
+                          {tx.Date || '14 Sep 2023'}
                         </td>
-                        <td style={{ padding: '8px 4px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        <td style={{ padding: '6px 4px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                           <div style={{ fontWeight: 500 }}>{tx.SenderName}</div>
-                          <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{tx.SenderAccount}</div>
+                          <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>{tx.SenderAccount}</div>
                         </td>
-                        <td style={{ padding: '8px 4px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        <td style={{ padding: '6px 4px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                           <div style={{ fontWeight: 500 }}>{tx.ReceiverName}</div>
-                          <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{tx.ReceiverAccount}</div>
+                          <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>{tx.ReceiverAccount}</div>
                         </td>
-                        <td style={{ padding: '8px 4px', textAlign: 'right', color: 'var(--accent-cyan)', fontWeight: 600 }}>
+                        <td style={{ padding: '6px 4px', textAlign: 'right', color: 'var(--accent-cyan)', fontWeight: 600 }}>
                           ₹{parseInt(tx.Amount || 0).toLocaleString()}
                         </td>
                       </tr>
@@ -254,16 +252,16 @@ export default function TransactionVisualizer() {
                 </table>
               </div>
             ) : (
-              <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', fontSize: '0.8rem' }}>
+              <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', fontSize: '0.78rem', minHeight: '100px' }}>
                 Load demo data or upload a bank CSV file to inspect transactions.
               </div>
             )}
           </div>
         )}
 
-        {/* Right Side: Flowchart Matrix */}
+        {/* Right Side: Graph */}
         {(viewMode === 'split' || viewMode === 'graph') && (
-          <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden', position: 'relative', minHeight: 0 }}>
+          <div className="glass-panel flow-graph-container" style={{ display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden', position: 'relative', flex: viewMode === 'graph' ? 1 : undefined, minHeight: '350px' }}>
             {isLoading ? (
               <div style={{ display: 'flex', height: '100%', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-cyan)', fontSize: '0.85rem' }}>
                 Analyzing Account Flow Matrix...
@@ -281,9 +279,9 @@ export default function TransactionVisualizer() {
                 <Controls position="top-right" />
               </ReactFlow>
             ) : (
-              <div style={{ display: 'flex', height: '100%', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+              <div style={{ display: 'flex', height: '100%', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', fontSize: '0.85rem', minHeight: '150px' }}>
                 <div style={{ textAlign: 'center' }}>
-                  <Database size={36} style={{ opacity: 0.2, margin: '0 auto 0.5rem' }} />
+                  <Database size={32} style={{ opacity: 0.2, margin: '0 auto 0.5rem' }} />
                   <p>Click "Demo CSV" to render the Money Trail Flowchart.</p>
                 </div>
               </div>

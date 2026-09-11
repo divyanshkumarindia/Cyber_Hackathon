@@ -21,8 +21,8 @@
 
 /* Custom Sleek Dark Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -56,7 +56,7 @@ body {
   overflow: hidden;
 }
 
-/* Sidebar */
+/* Sidebar Navigation */
 .sidebar {
   width: 250px;
   background: #0d0e12;
@@ -84,6 +84,11 @@ body {
   color: var(--accent-cyan);
 }
 
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+}
+
 .nav-item {
   display: flex;
   align-items: center;
@@ -97,6 +102,7 @@ body {
   transition: all 0.15s ease;
   cursor: pointer;
   margin-bottom: 0.35rem;
+  white-space: nowrap;
 }
 
 .nav-item:hover {
@@ -108,6 +114,14 @@ body {
   background: rgba(56, 189, 248, 0.1);
   color: var(--accent-cyan);
   border-left: 3px solid var(--accent-cyan);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 0.75rem 0.5rem;
+  border-top: var(--glass-border);
+  color: var(--text-muted);
+  font-size: 0.75rem;
 }
 
 /* Main Content Area */
@@ -127,12 +141,15 @@ body {
   margin-bottom: 1.25rem;
   padding-bottom: 1rem;
   border-bottom: var(--glass-border);
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .header h1 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: white;
+  word-break: break-word;
 }
 
 .glass-panel {
@@ -163,7 +180,29 @@ body {
   transform: translateY(-1px);
 }
 
-/* Custom ReactFlow Styles to Fix Dark Theme & Overlays */
+/* Dynamic Grid Classes for Mobile Support */
+.split-view-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 1rem;
+  flex: 1;
+  min-height: 0;
+}
+
+.phishing-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ReactFlow Styles */
 .react-flow__node {
   border-radius: 8px;
 }
@@ -174,22 +213,14 @@ body {
   border-radius: 8px;
   padding: 10px 14px;
   color: white;
-  min-width: 160px;
+  min-width: 150px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   font-size: 12px;
 }
 
-.custom-node.layer-1 {
-  border-color: rgba(244, 63, 94, 0.6);
-}
-
-.custom-node.layer-2 {
-  border-color: rgba(245, 158, 11, 0.6);
-}
-
-.custom-node.layer-3 {
-  border-color: rgba(16, 185, 129, 0.6);
-}
+.custom-node.layer-1 { border-color: rgba(244, 63, 94, 0.6); }
+.custom-node.layer-2 { border-color: rgba(245, 158, 11, 0.6); }
+.custom-node.layer-3 { border-color: rgba(16, 185, 129, 0.6); }
 
 .node-header {
   font-weight: 600;
@@ -205,10 +236,7 @@ body {
   font-size: 11px;
 }
 
-/* Hide unwanted ReactFlow default branding & white control boxes */
-.react-flow__attribution {
-  display: none !important;
-}
+.react-flow__attribution { display: none !important; }
 
 .react-flow__controls {
   background: #111318 !important;
@@ -227,4 +255,88 @@ body {
 .react-flow__controls-button:hover {
   background: rgba(255, 255, 255, 0.08) !important;
   fill: white !important;
+}
+
+/* ========================================================= */
+/* MOBILE RESPONSIVE DESIGN (@media max-width: 768px)       */
+/* ========================================================= */
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 0.75rem 1rem;
+    border-right: none;
+    border-bottom: var(--glass-border);
+  }
+
+  .sidebar-logo {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 0.5rem;
+    padding-bottom: 4px;
+  }
+
+  .nav-item {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    margin-bottom: 0;
+    border-left: none !important;
+    border-bottom: 2px solid transparent;
+  }
+
+  .nav-item.active {
+    border-bottom-color: var(--accent-cyan) !important;
+    background: rgba(56, 189, 248, 0.15);
+  }
+
+  .sidebar-footer {
+    display: none;
+  }
+
+  .main-content {
+    padding: 1rem;
+    overflow-y: visible;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .header h1 {
+    font-size: 1.2rem;
+  }
+
+  /* Responsive Grids */
+  .split-view-grid {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+  }
+
+  .phishing-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .two-col-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .flow-graph-container {
+    min-height: 380px !important;
+    height: 380px !important;
+  }
 }
