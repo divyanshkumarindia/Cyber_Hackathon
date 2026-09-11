@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Shield, Cpu, Lock, Search, FileCode } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 export default function OSINTHub() {
   const osintTools = [
@@ -39,29 +39,32 @@ export default function OSINTHub() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', gap: '1rem', overflowY: 'auto' }}>
-      <div className="glass-panel" style={{ padding: '1.5rem' }}>
-        <h2 style={{ fontSize: '1.25rem', marginBottom: '0.25rem' }}>Haryana Police OSINT Intelligence Directory</h2>
-        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+      <div className="glass-panel" style={{ padding: '1.25rem' }}>
+        <h2 style={{ fontSize: '1.15rem', fontWeight: 600, marginBottom: '0.3rem' }}>Haryana Police OSINT Intelligence Directory</h2>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem' }}>
           Curated reference hub of open-source intelligence tools tailored for investigating APK malware, phishing links, and money laundering.
         </p>
       </div>
 
-      {/* Grid of Tools */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+      {/* Responsive Grid */}
+      <div className="two-col-grid">
         {osintTools.map((tool, index) => (
-          <div key={index} className="glass-panel" style={{ display: 'flex', flexDirection: 'column', padding: '1.25rem', justifyContent: 'space-between' }}>
+          <div key={index} className="glass-panel" style={{ display: 'flex', flexDirection: 'column', padding: '1.1rem', justifyContent: 'space-between' }}>
             <div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.75rem' }}>
-                <span style={{ fontSize: '0.7rem', color: 'var(--accent-cyan)', background: 'rgba(56,189,248,0.1)', padding: '2px 8px', borderRadius: '4px', border: '1px solid var(--accent-cyan)' }}>
+              {/* Fixed Flex Header (No Text Overlap!) */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '0.7rem', fontWeight: 600, color: 'var(--accent-cyan)', background: 'rgba(56,189,248,0.12)', padding: '3px 8px', borderRadius: '4px', border: '1px solid var(--accent-cyan)', display: 'inline-block', whiteSpace: 'nowrap' }}>
                   {tool.badge}
                 </span>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{tool.category}</span>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 500, whiteSpace: 'nowrap' }}>
+                  {tool.category}
+                </span>
               </div>
 
-              <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.5rem', color: 'white' }}>{tool.title}</h3>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '1rem', lineHeight: '1.4' }}>{tool.desc}</p>
+              <h3 style={{ fontSize: '0.95rem', fontWeight: 600, marginBottom: '0.5rem', color: 'white', lineHeight: '1.3' }}>{tool.title}</h3>
+              <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '0.85rem', lineHeight: '1.4' }}>{tool.desc}</p>
 
-              <div style={{ background: 'rgba(0,0,0,0.4)', padding: '0.75rem', borderRadius: '6px', fontSize: '0.75rem', color: 'var(--text-main)', border: 'var(--glass-border)', marginBottom: '1rem' }}>
+              <div style={{ background: 'rgba(0,0,0,0.4)', padding: '0.65rem', borderRadius: '6px', fontSize: '0.72rem', color: 'var(--text-main)', border: 'var(--glass-border)', marginBottom: '0.85rem', lineHeight: '1.4' }}>
                 <strong style={{ color: 'var(--accent-purple)' }}>Investigation Steps: </strong>
                 {tool.guide}
               </div>
@@ -72,9 +75,9 @@ export default function OSINTHub() {
               target="_blank" 
               rel="noreferrer"
               className="btn-primary" 
-              style={{ textDecoration: 'none', justifyContent: 'center', background: 'rgba(255,255,255,0.05)', border: 'var(--glass-border)' }}
+              style={{ textDecoration: 'none', justifyContent: 'center', background: 'rgba(255,255,255,0.05)', border: 'var(--glass-border)', fontSize: '0.8rem', padding: '0.5rem' }}
             >
-              Access Resource <ExternalLink size={14} />
+              Access Resource <ExternalLink size={13} />
             </a>
           </div>
         ))}
