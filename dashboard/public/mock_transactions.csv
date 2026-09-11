@@ -1,0 +1,11 @@
+TransactionID,Date,Amount,SenderAccount,SenderName,ReceiverAccount,ReceiverName,Type,Layer
+TXN001,14 Sep 2023,50000,ACC1001,Victim A,ACC2001,Mule Account 1,Transfer,1
+TXN002,18 Sep 2023,75000,ACC1002,Victim B,ACC2001,Mule Account 1,Transfer,1
+TXN003,21 Sep 2023,125000,ACC2001,Mule Account 1,ACC3001,Shell Corp A,Transfer,2
+TXN004,25 Sep 2023,40000,ACC1003,Victim C,ACC2002,Mule Account 2,Transfer,1
+TXN005,28 Sep 2023,40000,ACC2002,Mule Account 2,ACC3001,Shell Corp A,Transfer,2
+TXN006,02 Oct 2023,160000,ACC3001,Shell Corp A,ACC4001,Crypto Exchange,Transfer,3
+TXN007,04 Oct 2023,5000,ACC3001,Shell Corp A,ACC4002,Cash Withdrawal,ATM,3
+TXN008,09 Oct 2023,25000,ACC1004,Victim D,ACC2003,Mule Account 3,Transfer,1
+TXN009,12 Oct 2023,25000,ACC2003,Mule Account 3,ACC3002,Shell Corp B,Transfer,2
+TXN010,17 Oct 2023,25000,ACC3002,Shell Corp B,ACC4001,Crypto Exchange,Transfer,3
